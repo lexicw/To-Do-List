@@ -1,0 +1,56 @@
+#wrapper	{	width: 750px;
+				margin: auto;
+				border: 2px solid rgb(0,0,0);
+				box-shadow: 3px 3px 3px rgb(102,102,102);
+				padding: 20px;
+				background-color: rgb(197, 234, 235);
+			}
+			
+h1			{	font: 3em 'Arial'; 
+				text-align: center; }
+			input[type="text"] {
+			width: 200px;
+}
+
+body			{	font: 1.1em 'Arial';
+				background-image: linear-gradient(to right, rgb(197, 234, 235), white);
+			}
+
+section		{	clear: both;	}
+
+footer		{	border-top: 2px solid rgb(0,0,0);
+				font-size: 0.8em; 
+				margin-top: 50px;
+			}
+
+fieldset		{	margin-bottom: 30px; } 
+
+fieldset.left	{	float: left;
+					width: 40%; 
+					height: 130px;
+				}
+			
+fieldset.right		{	float: right;
+					width: 40%; 
+					height: 130px;
+				}
+a				{	color: rgb(0,0,0); }
+a:hover			{	text-shadow: 1px 1px rgb(102,102,102); }
+a#current		{	border-bottom: 2px solid rgb(204,204,204); }
+.actions		{	display: block;
+					margin-bottom: 5px;
+				}
+ol li			{	font-size: 1.2em; }
+table			{	margin-left: 30px; }				
+th				{	text-align: left;
+					padding-left: 1em;
+				}
+td				{	width: 40%; 
+					font: 1em Consolas,"Courier New",monospace;
+				}
+code				{	font-weight: bold;
+					font-size: 1.1em;
+				}
+nav a			{	margin-right: 15px; }
+.noBullet		{	list-style-type: none; }
+ul.twoCol		{	-moz-column-count: 2; -moz-column-gap: 1em; }

@@ -1,0 +1,122 @@
+<!-- Author:        Alexandra Wheeler  		 -->
+<!doctype html>
+<html lang="en">
+<head>
+<title>To-Do List</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main id="wrapper">
+<header>
+  <h1>To-Do List</h1>
+</header>
+<article>
+<p>Enter any items you would like to be added to your To-Do list below.</p>
+</article>
+<form id="arrayForm">
+<fieldset class="left">
+<legend>Stuff to do</legend>
+<p>Enter something you need to do:</p>
+<input type="text" name="itemType" id="itemType" size="10" />
+<input type="button" name="addButton" id="addButton" value="Add" />
+</fieldset>
+<fieldset class="right">
+<legend>List Actions</legend>
+<input type="button" class="actions" name="displayList" id="displayList" value="Display List" />
+<input type="button" class="actions" name="removeFirst" id="removeFirst" value="Remove First" />
+<input type="button" class="actions" name="removeLast" id="removeLast" value="Remove Last" />
+</fieldset>
+</form>
+<section>
+<h2>My To-Do List:</h2>
+<p id="output">The list items will go here.</p>
+</section>
+<script>
+var items = []; // initializes the array which is not yet populated
+var out = document.getElementById("output");
+
+function displayList() { // clears anything that was previously in the "output" paragraph, then turns any values in the array into an ordered list
+	 console.log("Entering displayList()...");
+	 out.innerHTML = "";
+	 var ol = document.createElement("ol");
+	 out.appendChild(ol);
+	 for (i = 0; i < items.length; i++) {
+		console.log("item " + i + "  in the array is " + items[i]);
+		var li = document.createElement("li");
+		var textnode = document.createTextNode(items[i]);
+		ol.appendChild(li);
+		li.appendChild(textnode);
+	 	}
+	}
+
+function addItem() { // function that adds new items to the array
+	console.log("Entering addItem()...");
+	newItem = document.getElementById("itemType").value;
+	items.push(newItem);
+	console.log("newItem = " + newItem);
+	out.innerHTML = "The number of items on your list is " + items.length + "."
+	document.getElementById("itemType").value = '';
+	document.getElementById("itemType").focus();
+	displayList();
+}
+
+function removeFirst() { // function that removes first item from the array
+	console.log("Entering removeFirst()...");
+	items.shift();
+	displayList();
+}
+
+function removeLast() { // function that removes last item from the array
+	console.log("Entering removeLast()...");
+	items.pop();
+	displayList();
+}
+
+function createEventListeners() { // Creates the event listeners that will allow the buttons to call their corresponding function upon clicking
+	console.log("Entering createEventListeners()...");
+   var displayBtn = document.getElementById("displayList");
+   if (displayBtn.addEventListener) {
+      displayBtn.addEventListener("click", displayList, false);
+   } else if (displayBtn.attachEvent) {
+      displayBtn.attachEvent("onclick", displayList);
+   } 
+   var addBtn = document.getElementById("addButton");
+   if (addBtn.addEventListener) {
+      addBtn.addEventListener("click", addItem, false);
+   } else if (addBtn.attachEvent) {
+      addBtn.attachEvent("onclick", addItem);
+   } 
+   var removefirstBtn = document.getElementById("removeFirst");
+   if (removefirstBtn.addEventListener) {
+      removefirstBtn.addEventListener("click", removeFirst, false);
+   } else if (removefirstBtn.attachEvent) {
+      removefirstBtn.attachEvent("onclick", removeFirst);
+   } 
+   var removelastBtn = document.getElementById("removeLast");
+   if (removelastBtn.addEventListener) {
+      removelastBtn.addEventListener("click", removeLast, false);
+   } else if (removelastBtn.attachEvent) {
+      removelastBtn.attachEvent("onclick", removeLast);
+   } 
+} 
+
+if (window.addEventListener) { // Calls event listeners upon loading the page
+   window.addEventListener("load", createEventListeners, false);
+} else if (window.attachEvent) {
+   window.attachEvent("onload", createEventListeners);
+}
+</script>
+<footer>
+
+<p>&copy; <span id="year"></span>. Alexandra Wheeler.</p>
+</footer>
+<script>
+    var currentYear = new Date().getFullYear(); 
+	var dateContainer = document.getElementById("year");
+	dateContainer.innerHTML = currentYear;
+</script>
+</main>
+</body>
+</html>
