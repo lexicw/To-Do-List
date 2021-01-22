@@ -13,7 +13,9 @@ h1			{	font: 3em 'Arial';
 }
 
 body			{	font: 1.1em 'Arial';
-				background-image: linear-gradient(to right, rgb(197, 234, 235), white);
+				background: linear-gradient(white, rgb(197, 234, 235));
+				background-repeat: no-repeat;
+				background-attachment: fixed;
 			}
 
 section		{	clear: both;	}
