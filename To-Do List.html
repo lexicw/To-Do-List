@@ -27,6 +27,7 @@
 <input type="button" class="actions" name="displayList" id="displayList" value="Display List" />
 <input type="button" class="actions" name="removeFirst" id="removeFirst" value="Remove First" />
 <input type="button" class="actions" name="removeLast" id="removeLast" value="Remove Last" />
+<input type="button" class="actions" name="clearList" id="clearList" value="Clear List" />
 </fieldset>
 </form>
 <section>
@@ -34,10 +35,11 @@
 <p id="output">The list items will go here.</p>
 </section>
 <script>
-var items = []; // initializes the array which is not yet populated
+var items = []; // initializes the array 
 var out = document.getElementById("output");
 
-function displayList() { // clears anything that was previously in the "output" paragraph, then turns any values in the array into an ordered list
+// Clears anything that was previously in the "output" paragraph, then turns any values in the array into an ordered list
+function displayList() { 
 	 console.log("Entering displayList()...");
 	 out.innerHTML = "";
 	 var ol = document.createElement("ol");
@@ -51,7 +53,8 @@ function displayList() { // clears anything that was previously in the "output" 
 	 	}
 	}
 
-function addItem() { // function that adds new items to the array
+// Function that adds new items to the array
+function addItem() { 
 	console.log("Entering addItem()...");
 	newItem = document.getElementById("itemType").value;
 	items.push(newItem);
@@ -62,19 +65,29 @@ function addItem() { // function that adds new items to the array
 	displayList();
 }
 
-function removeFirst() { // function that removes first item from the array
+// Function that removes first item from the array
+function removeFirst() { 
 	console.log("Entering removeFirst()...");
 	items.shift();
 	displayList();
 }
 
-function removeLast() { // function that removes last item from the array
+// Function that removes last item from the array
+function removeLast() { 
 	console.log("Entering removeLast()...");
 	items.pop();
 	displayList();
 }
 
-function createEventListeners() { // Creates the event listeners that will allow the buttons to call their corresponding function upon clicking
+// Function that clears the list
+function clearList() { 
+	console.log("Entering clearList()...");
+	items = [];
+	displayList();
+}
+
+// Creates the event listeners that will allow the buttons to call their corresponding function upon clicking
+function createEventListeners() { 
 	console.log("Entering createEventListeners()...");
    var displayBtn = document.getElementById("displayList");
    if (displayBtn.addEventListener) {
@@ -100,9 +113,17 @@ function createEventListeners() { // Creates the event listeners that will allow
    } else if (removelastBtn.attachEvent) {
       removelastBtn.attachEvent("onclick", removeLast);
    } 
+
+	var clearListBtn = document.getElementById("clearList");
+   if (clearListBtn.addEventListener) {
+      clearListBtn.addEventListener("click", clearList, false);
+   } else if (clearListBtn.attachEvent) {
+      clearListBtn.attachEvent("onclick", clearList);
+   }
 } 
 
-if (window.addEventListener) { // Calls event listeners upon loading the page
+// Calls event listeners upon loading the page
+if (window.addEventListener) { 
    window.addEventListener("load", createEventListeners, false);
 } else if (window.attachEvent) {
    window.attachEvent("onload", createEventListeners);
