@@ -6,7 +6,7 @@
 				background-color: rgb(197, 234, 235);
 			}
 			
-h1			{	font: 3em 'Arial'; 
+h1			{	font: 3em 'Sofia'; 
 				text-align: center; }
 			input[type="text"] {
 			width: 200px;
@@ -56,3 +56,29 @@ code				{	font-weight: bold;
 nav a			{	margin-right: 15px; }
 .noBullet		{	list-style-type: none; }
 ul.twoCol		{	-moz-column-count: 2; -moz-column-gap: 1em; }
+
+input[type=button] {
+  border: none;
+  color: white;
+  padding: 5px 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #555555;
+  transition-duration: 0.4s;
+}
+
+
+input[type=button]:hover {
+  background-color: white; 
+  color: black;
+}
+
+input[type=button]:active {
+  border: none;
+  background-color: white; 
+  color: black;
+}
